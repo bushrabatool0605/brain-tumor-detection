@@ -6,7 +6,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # ✅ Allowed users list
 allowed_users = [
     {"email": "doctor1@example.com", "password": "secure123"},
-    {"email": "doctor2@example.com", "password": "secure456"},
+    {"email": "doctor2@example.com", "password": "1234567"},
     {"email": "admin@example.com", "password": "admin789"},
 ]
 
