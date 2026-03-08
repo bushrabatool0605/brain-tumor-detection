@@ -1,0 +1,17 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.alertBox {
+  background: #fff5f5;
+  border-left: 6px solid #dc2626;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+p {
+  color: #1f2937;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}

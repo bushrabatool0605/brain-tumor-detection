@@ -1,0 +1,36 @@
+.container {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+  color: #1e3a8a;
+  margin-bottom: 25px;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+h3 {
+  color: #1D4ED8;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #1E293B;
+  line-height: 1.7;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+  color: #1f2937;
+}
