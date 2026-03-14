@@ -6,17 +6,15 @@ from passlib.context import CryptContext
 router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# ✅ Request models
+# Request models
 class LoginRequest(BaseModel):
     email: str
     password: str
-
 class ChangePasswordRequest(BaseModel):
     email: str
     old_password: str
     new_password: str
-
-# ✅ Login route
+# Login route
 @router.post("/login")
 def login(request: LoginRequest):
     db = SessionLocal()
@@ -39,7 +37,7 @@ def change_password(request: ChangePasswordRequest):
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     user.password = pwd_context.hash(request.new_password)
-    db.commit()
+    db.commit()#save changes
     db.close()
 
     return {"message": "Password updated successfully"}

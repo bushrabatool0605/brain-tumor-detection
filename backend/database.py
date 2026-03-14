@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, DateTime,Float
 from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
 
@@ -14,9 +14,13 @@ class Scan(Base):
     __tablename__ = "scans"
 
     id = Column(Integer, primary_key=True, index=True)
+    patient_name = Column(String)
+    patient_age = Column(Integer)
     image_name = Column(String)
     tumor = Column(String)
     tumor_type = Column(String)
+    confidence1 = Column(Float)
+    confidence2 = Column(Float)
     date = Column(DateTime, default=datetime.utcnow)
 
 # ✅ User table (for authentication)

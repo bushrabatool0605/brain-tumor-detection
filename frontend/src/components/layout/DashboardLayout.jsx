@@ -9,7 +9,8 @@ import {
   FaFileAlt,
   FaBook,
   FaInfoCircle,
-  FaBars
+  FaBars,
+  FaHistory 
 } from "react-icons/fa";
 
 const DashboardLayout = ({ children, loading }) => {
@@ -44,6 +45,9 @@ const DashboardLayout = ({ children, loading }) => {
           </NavLink>
           <NavLink to="/change-password" className={({ isActive }) => (isActive ? styles.active : "")}>
             <FaKey /> {!collapsed && <span>Change Password</span>}
+          </NavLink>
+          <NavLink to="/history" className={({isActive})=>(isActive ? styles.active : "")}>
+          <FaHistory /> {!collapsed && <span> History</span>}
           </NavLink>
           <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : "")}>
             <FaSignInAlt /> {!collapsed && <span>Login</span>}

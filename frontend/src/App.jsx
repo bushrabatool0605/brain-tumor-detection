@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ChangePassword from "./pages/ChangePassword";
+import History from "./pages/History";
 import Disclamer from "./pages/Disclaimer";
 import UserManual from "./pages/UserManual";
 import About from "./pages/About";
@@ -16,6 +17,7 @@ function App() {
         <Route path="/disclaimer" element={<Disclamer />} />
         <Route path="/usermanual" element={<UserManual />}/>
         <Route path="/about" element={<About />}/>
+        <Route path="/history" element={<History />}/>
       </Routes>
     </BrowserRouter>
   );

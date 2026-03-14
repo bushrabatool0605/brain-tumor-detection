@@ -1,0 +1,132 @@
+/* Main Card */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 650px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Headings */
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Inputs */
+.card input[type="text"],
+.card input[type="number"],
+.card input[type="file"] {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52,152,219,0.4);
+  outline: none;
+}
+
+/* Buttons */
+.card button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.card button:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+.card button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Image Preview */
+.preview {
+  display: block;
+  max-width: 100%;
+  margin: 12px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Result Card */
+.resultCard {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #f9f9f9;
+  animation: slideUp 0.5s ease;
+}
+
+.resultCard p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+/* Report Card */
+.reportCard {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #eef6fb;
+  animation: slideUp 0.5s ease;
+}
+
+.reportCard h3 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    max-width: 95%;
+    padding: 18px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

@@ -48,11 +48,11 @@ async def predict(file: UploadFile = File(...)):
     db.commit()
     db.close()
     
-    confidence = float(np.max(preds))  # highest probability
+    confidence1 = float(np.max(preds))  # highest probability
     return {
         "tumor": tumor,
         "prediction": label,
-         "confidence": confidence
+         "confidence1": confidence1
     }
 
 @router.post("/classify")
@@ -68,9 +68,11 @@ async def classify(file: UploadFile = File(...)):
     preds = model.predict(img_arr)
     class_id = np.argmax(preds)
     label = class_names[class_id]
+    confidence2 = float(np.max(preds))  # highest probability
 
     return {
-        "tumor_type": label
+        "tumor_type": label,
+        "confidence2": confidence2
     }
 
 @router.get("/history")
