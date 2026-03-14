@@ -4,6 +4,7 @@ import styles from "./PatientForm.module.css";
 function PatientForm({ onSave }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ function PatientForm({ onSave }) {
       alert("Please enter patient name and age");
       return;
     }
-    onSave({ name, age });
+    onSave({ name, age, gender });
   };
 
   return (
@@ -30,6 +31,11 @@ function PatientForm({ onSave }) {
           value={age}
           onChange={(e) => setAge(e.target.value)}
         />
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
         <button type="submit">Save Patient</button>
       </form>
     </div>

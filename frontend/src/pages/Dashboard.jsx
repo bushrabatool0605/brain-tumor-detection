@@ -1,35 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import PatientForm from "../components/PatientForm";
 import UploadScan from "../components/UploadScan";
 import styles from "./Dashboard.module.css";
 
 function Dashboard() {
+  const [patient, setPatient] = useState(null);
+
   return (
     <DashboardLayout>
       <div className={styles.container}>
-        {/* Animated Header */}
         <h2 className={styles.title}>Brain Tumor Detection</h2>
         <h2 className={`${styles.title} ${styles.fadeIn}`}>
           and Classification
         </h2>
 
         <div className={styles.grid}>
-          {/* Patient Info Card */}
           <div className={styles.card}>
-            <PatientForm />
+            <PatientForm onSave={setPatient} />
           </div>
-
-          {/* Upload Scan Card */}
           <div className={styles.card}>
-            <UploadScan />
+            <UploadScan patient={patient} />
           </div>
-
-          {/* Quick Instructions Card */}
           <div className={styles.card}>
             <h3>Quick Instructions</h3>
             <ul className={styles.instructions}>
-              <li>Fill patient name and age first.</li>
+              <li>Enter patient info first.</li>
               <li>Upload MRI scan (JPG/PNG).</li>
               <li>System will analyze automatically.</li>
               <li>Download structured PDF report.</li>
