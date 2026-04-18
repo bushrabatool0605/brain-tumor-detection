@@ -1,0 +1,293 @@
+/* --- LAYOUT --- */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+  font-family: "Inter", sans-serif;
+}
+
+.sidebar {
+  width: 248px;
+  background: #94a3b8;
+  color: white;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  border-right: 1px solid #e2e8f0;
+}
+
+.sidebar.collapsed {
+  width: 64px;
+}
+
+/* --- SIDEBAR INNER SCROLL --- */
+.sidebarInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 12px 24px;
+}
+
+.sidebarInner::-webkit-scrollbar { width: 0px; }
+
+/* --- TOP SECTION --- */
+.topSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  padding: 4px 4px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* --- BRAND --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.brandIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.brandName {
+  color: #1e293b;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.brandSub {
+  color: white;
+  font-size: 0.68rem;
+  margin: 0;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* --- MENU BUTTON --- */
+.menuBtn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border: none;
+  background: #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.menuBtn:hover {
+  background: #cbd5e1;
+  color: #1e293b;
+}
+
+/* --- DIVIDER --- */
+.divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0 4px 20px;
+  flex-shrink: 0;
+}
+
+/* --- SECTION LABEL (MAIN MENU) --- */
+.navLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* --- NAVIGATION --- */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav a svg {
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+}
+
+.nav a span {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* Active Link */
+.active {
+  background: #dbeafe !important;
+  color: #2563eb !important;
+  border: 1px solid #bfdbfe;
+}
+
+.active svg {
+  color: #2563eb !important;
+}
+
+/* --- LOGOUT SECTION --- */
+.navBottom {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navBottom a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.navBottom a:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.navBottom a svg { font-size: 1rem; flex-shrink: 0; }
+
+/* --- CONTENT --- */
+.content {
+  flex: 1;
+  padding: 32px;
+  margin-left: 248px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.sidebar.collapsed ~ .content {
+  margin-left: 64px;
+}
+
+/* --- LOADER --- */
+.overlayLoader {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- INFORMATION SECTION GAP FIX (NAYA CLASS) --- */
+.navLabelInfo {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Jab sidebar collapsed ho to hide karo */
+.sidebar.collapsed .navLabelInfo {
+  display: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -248px;
+    transition: left 0.3s ease, width 0.3s ease;
+    width: 248px !important;
+  }
+  .sidebar:not(.collapsed) { left: 0; }
+  .content { margin-left: 0 !important; padding: 20px; }
+}

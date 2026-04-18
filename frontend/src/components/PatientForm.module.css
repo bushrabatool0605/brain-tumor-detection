@@ -1,0 +1,121 @@
+/* Card Styling */
+.card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease-out;
+  border: 1px solid #e2e8f0;
+  /* Add transition to match dashboard hover */
+  transition: box-shadow 0.3s ease; 
+}
+
+/* Note: The hover lift is controlled by the parent gridColumn in Dashboard.css */
+/* We just need the shadow to get stronger here if we want, 
+   but parent handles the lift. Keep it simple. */
+
+.cardTitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+  font-weight: 600;
+  border-left: 4px solid #2563eb;
+  padding-left: 10px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.row {
+  display: flex; /*default flex direction row*/
+  gap: 15px;
+}
+
+.row .formGroup {
+  flex: 1;    /* Equal width for children */
+}
+
+.inputField {
+  width: 90%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  color: #334155;
+}
+
+.inputField:focus {
+  background: #fff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectWrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: 35px;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+.saveBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.saveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.saveBtn:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
