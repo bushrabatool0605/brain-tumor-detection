@@ -12,7 +12,7 @@ function History() {
 
   const fetchHistory = () => {
     setLoading(true);
-    fetch("http://localhost:8000/history")
+    fetch("/history")
       .then(res => res.json())
       .then(data => {
         setScans(Array.isArray(data) ? data : []);
@@ -27,7 +27,7 @@ function History() {
     if (!deleteTarget) return;
     setDeleting(true);
     try {
-      await fetch(`http://localhost:8000/history/${deleteTarget}`, { method: "DELETE" });
+      await fetch(`/history/${deleteTarget}`, { method: "DELETE" });
       setScans(prev => prev.filter(s => s.scan_id !== deleteTarget));
     } catch (e) {
       console.error(e);

@@ -68,7 +68,7 @@ function UploadScan({ patient }) {
 
     try {
       setLoading(true);
-      const res  = await fetch("http://localhost:8000/predict", { method: "POST", body: formData });
+      const res  = await fetch("/predict", { method: "POST", body: formData });
       const data = await res.json();
       setTumorDetected(data.tumor);
       setConfidence1(data.confidence1);
@@ -89,7 +89,7 @@ function UploadScan({ patient }) {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8000/classify", { method: "POST", body: formData });
+      const res = await fetch("/classify", { method: "POST", body: formData });
       if (!res.ok) throw new Error("Classification failed.");
       const data = await res.json();
       setTumorType(data.tumor_type);
