@@ -255,7 +255,7 @@
 # # uvicorn main:app --reload
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from .pydantic import BaseModel
 from typing import Optional, List
 from PIL import Image
 import numpy as np
@@ -264,7 +264,7 @@ import io
 from datetime import datetime
 import cv2
 import base64
-from database import get_db, hash_password, init_db
+from .database import get_db, hash_password, init_db
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
