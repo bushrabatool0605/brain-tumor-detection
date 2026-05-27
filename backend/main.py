@@ -255,7 +255,7 @@
 # # uvicorn main:app --reload
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from .pydantic import BaseModel
+from pydantic import BaseModel
 from typing import Optional, List
 from PIL import Image
 import numpy as np
