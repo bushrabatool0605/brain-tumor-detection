@@ -27,10 +27,13 @@ COPY --from=frontend-builder /app/frontend/dist ./backend/static
 
 # Step 3: Google Drive se Models automatic download karna
 # (Aapke links se file IDs nikal kar wget ke zariye download)
-RUN mkdir -p backend/Model && \
-    wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1pcoYFl2kJM6bRSkBA3GCUfN0tITaFi9O' -O backend/Model/MRI_NOT_MRI.keras && \
-    wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1myrvi024TMRiPx6PYasH5TEADNp15WJz' -O backend/Model/4Types_Brain.keras
 
+# Step 3: Google Drive Large File Auth Bypass Download
+RUN mkdir -p backend/Model && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1pcoYFl2kJM6bRSkBA3GCUfN0tITaFi9O' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1pcoYFl2kJM6bRSkBA3GCUfN0tITaFi9O" -O backend/Model/MRI_NOT_MRI.keras && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1myrvi024TMRiPx6PYasH5TEADNp15WJz' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1myrvi024TMRiPx6PYasH5TEADNp15WJz" -O backend/Model/4Types_Brain.keras && \
+    rm -rf /tmp/cookies.txt
 # Port expose karna jo Hugging Face use karta hai
 EXPOSE 7860
 
