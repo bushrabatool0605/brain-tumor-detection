@@ -1,6 +1,6 @@
----
+﻿---
 title: Brain Tumor Detection System
-emoji: ??
+emoji: 🧠
 colorFrom: blue
 colorTo: indigo
 sdk: docker
