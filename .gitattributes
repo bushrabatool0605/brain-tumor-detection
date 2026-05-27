@@ -1,0 +1,7 @@
+react-app/src/Image/video.mp4 filter=lfs diff=lfs merge=lfs -text
+backend/brain_tumor.db filter=lfs diff=lfs merge=lfs -text
+react-app/src/Image/img1.png filter=lfs diff=lfs merge=lfs -text
+react-app/src/Image/img2.png filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
