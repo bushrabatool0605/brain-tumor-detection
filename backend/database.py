@@ -1,39 +1,21 @@
-
 import sqlite3
 import hashlib
 import os
-import os
-import sqlite3
 
-# 1. Base directory nikaal lein (backend folder)
+# 1. Base directory nikaal lein (backend folder ka absolute path)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 2. Check karein ke kya hum Docker/Hugging Face par hain ya local par
-# 1. Base directory nikaal lein (backend folder)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# 2. Hamesha database ko backend folder ke andar hi rakhein (Docker ho ya Local laptop)
+# Is se permission ka masla Hugging Face par 100% khatam ho jata hai.
+DB_NAME = os.path.join(BASE_DIR, "brain_tumor.db")
 
-# 2. Check karein ke kya hum Docker/Hugging Face par hain ya local par
-if os.path.exists("/data"):
-    # Hugging Face deployment ke liye absolute clean path
-    DB_NAME = "/data/brain_tumor.db"
-else:
-    # Local laptop ke liye backend folder ke andar path
-    DB_NAME = os.path.join(BASE_DIR, "brain_tumor.db")
-
-def init_db():
-    # 3. SQLite ab bina kisi error ke is path ko open kar lega
-    conn = sqlite3.connect(DB_NAME)
-    # ... baki ka aapka code waisay hi rahega ...
-# Agar Hugging Face ka persistent /data folder mojud hai toh wahan database banayein
-if os.path.exists("/data"):
-    DB_NAME = "sqlite:////data/brain_tumor.db"
-else:
-    DB_NAME = "sqlite:///brain_tumor.db" # Local laptop ke liye normal path
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
 
+
 def get_db():
+    # SQLite ab bina kisi error ke is clean absolute path ko open karega
     conn = sqlite3.connect(DB_NAME)
     conn.row_factory = sqlite3.Row
     try:
@@ -41,8 +23,9 @@ def get_db():
     finally:
         conn.close()
 
+
 def init_db():
-    conn = sqlite3.connect(DB_NAME) #databse connection
+    conn = sqlite3.connect(DB_NAME)  # database connection
     cursor = conn.cursor()
 
     # Users table
@@ -79,12 +62,12 @@ def init_db():
             gradcam_base64    TEXT,
             saved_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
-    """) #REAL means decimal numbers
+    """)  # REAL means decimal numbers
 
     existing_cols = [row[1] for row in cursor.execute("PRAGMA table_info(scan_history)")]
     if "gradcam_base64" not in existing_cols:
         cursor.execute("ALTER TABLE scan_history ADD COLUMN gradcam_base64 TEXT")
-        print("Migrated: added gradcam_base64 column.") # sirf developer ko batane ke liye . terminal me
+        print("Migrated: added gradcam_base64 column.")
 
     # Default admin user
     cursor.execute("SELECT * FROM users WHERE email = ?", ("admin123@gmail.com",))
@@ -98,6 +81,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-if __name__ == "__main__": #ye code sirf tab chale jab file directly run ho, import hone par nahi
+
+if __name__ == "__main__":
     init_db()
     print("Database initialized successfully!")
