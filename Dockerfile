@@ -30,7 +30,7 @@ COPY --from=frontend-builder /app/frontend/dist ./backend/static
 # Step 3: Just make sure Model folder exists inside backend
 # Model folder banayein aur local laptop se dono models ko lazmi copy karein
 RUN mkdir -p backend/Model
-COPY backend/Model/*.keras ./backend/Model/
+# COPY backend/Model/*.keras ./backend/Model/
 # Port expose karna jo Hugging Face use karta hai
 EXPOSE 7860
 
