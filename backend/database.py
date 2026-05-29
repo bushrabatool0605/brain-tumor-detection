@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 2. Hamesha database ko backend folder ke andar hi rakhein (Docker ho ya Local laptop)
 # Is se permission ka masla Hugging Face par 100% khatam ho jata hai.
-DB_NAME = os.path.join(BASE_DIR, "brain_tumor.db")
+DB_NAME = os.path.join(BASE_DIR, "/brain_tumor.db")
 
 
 def hash_password(password: str) -> str:
