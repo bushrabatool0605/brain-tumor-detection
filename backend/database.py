@@ -71,8 +71,13 @@
 # database.py
 import sqlite3
 import hashlib
+import os
 
-DB_NAME = "brain_tumor.db"
+# Agar Hugging Face ka persistent /data folder mojud hai toh wahan database banayein
+if os.path.exists("/data"):
+    DB_NAME = "sqlite:////data/brain_tumor.db"
+else:
+    DB_NAME = "sqlite:///brain_tumor.db" # Local laptop ke liye normal path
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
