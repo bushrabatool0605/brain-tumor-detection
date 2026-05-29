@@ -40,7 +40,7 @@ def startup_event():
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, "Model", "4Types_Brain.keras")
 model_path2 = os.path.join(BASE_DIR, "Model", "MRI_NOT_MRI.keras")
-tumor_model = tf.keras.models.load_model("model_path")
+tumor_model = tf.keras.models.load_model(model_path)
 _last_conv  = tumor_model.get_layer("block5_conv3")
 grad_model  = tf.keras.models.Model(
     inputs=tumor_model.input,
@@ -49,7 +49,7 @@ grad_model  = tf.keras.models.Model(
 
 #  MRI vs NOT_MRI model 
 mri_checker = tf.keras.models.load_model(
-    "model_path2",
+    model_path2,
     compile=False
 )
 # class_indices:- MRI_IMG=0, NOT_MRI_IMG=1 
