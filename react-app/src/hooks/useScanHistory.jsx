@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "http://localhost:8000/api";
+const API = "/api";
 
 export function useScanHistory() {
   const [history, setHistory] = useState([]);
