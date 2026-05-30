@@ -138,7 +138,8 @@ async def analyze(file: UploadFile = File(...)):
     #  Tumor classification
     preds      = tumor_model.predict(tensor)
     idx        = int(np.argmax(preds[0]))
-    confidence = float(np.max(preds[0])) * 100
+    raw_confidence = float(np.max(preds[0])-0.10) * 100
+    confidence = max(0.0, raw_confidence) 
     tumor_type = CLASS_NAMES[idx]
 
     return {
